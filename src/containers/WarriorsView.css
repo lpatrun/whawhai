@@ -1,0 +1,32 @@
+:root {
+  --yellow: #ffdf59;
+  --green: #73ffa0;
+  --red: #ff504d;
+  --gray: #434343;
+}
+
+.left-arrow {
+  border: solid var(--yellow);
+  border-width: 15px 15px 0 0;
+  display: inline-block;
+  padding: 30px;
+
+  transform: rotate(225deg);
+  border-radius: 5px;
+
+  margin-bottom: 20px;
+  margin-right: 15px;
+}
+
+.warriors-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 40%;
+  margin: 0 auto;
+  justify-items: center;
+  row-gap: 50px
+}
+
+.warriors-wrapper img {
+  cursor: pointer;
+}

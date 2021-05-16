@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useReducer } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import HomeView from './containers/HomeView'
+import WarriorsView from './containers/WarriorsView'
+import FightView from './containers/FightView'
+
+import { GameContext  } from "./context/context";
+import { gameReducer } from "./reducer/reducer";
+import {initialGameState} from './state/state';
+
 
 function App() {
+  const [state, dispatch] = useReducer(gameReducer, initialGameState);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+  <Router basename={process.env.PUBLIC_URL}>
+        <GameContext.Provider value={{ state, dispatch }}>
+            <Switch>
+              <Route path="/" exact component={HomeView} />
+              <Route path="/warriors" component={WarriorsView} />
+              <Route path="/fight" component={FightView} />
+              <Route path="*" component={HomeView} />
+            </Switch>
+         
+        </GameContext.Provider>
+      </Router>
+
+    </>
   );
 }
 

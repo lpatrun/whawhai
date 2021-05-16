@@ -1,0 +1,123 @@
+:root {
+  --yellow: #ffdf59;
+  --green: #73ffa0;
+  --red: #ff504d;
+  --gray: #434343;
+}
+
+/* font-family: 'Bangers', cursive;
+font-family: 'Roboto', sans-serif; */
+
+.container {
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--red);
+}
+
+.title-wrapper {
+  text-align: center;
+  padding-top: 50px;
+  margin-bottom: 50px;
+}
+
+.title-wrapper h1 {
+  color: var(--yellow);
+  font-family: "Bangers", cursive;
+  font-size: 150px;
+  letter-spacing: 8px;
+  margin: 0;
+  font-weight: 100;
+  display: inline-block;
+}
+
+.form-wrapper {
+  width: 35%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.form-wrapper__basic-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+.form-wrapper__basic-data input {
+  font-family: "Bangers", cursive;
+  font-size: 48px;
+  margin-left: 25px;
+  width: 100%;
+  background: var(--red);
+  color: var(--yellow);
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--yellow);
+  padding-bottom: 10px;
+}
+
+.form-wrapper__basic-data input::placeholder {
+  color: var(--yellow);
+}
+
+.form-wrapper__select-data {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 50px;
+}
+
+.form-wrapper__select-data select {
+  border: none;
+  outline: none;
+  padding: 10px;
+  color: var(--gray);
+  font-size: 35px;
+  font-weight: 800;
+  cursor: pointer;
+
+  /* background: rgb(255, 236, 155); */
+
+  -webkit-appearance: none;
+  background: url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/32x32/br_up.png) no-repeat right rgb(255, 236, 155);
+  background-position-x: 95%;
+}
+
+.form-wrapper__select-data select:first-child {
+  background: url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/32x32/br_up.png) no-repeat right rgb(255, 245, 205);
+  background-position-x: 95%;
+
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.form-wrapper__select-data select:last-child {
+  background: url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/32x32/br_up.png) no-repeat right rgb(255, 226, 105);
+  background-position-x: 95%;
+
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.form-wrapper__select-data select:hover {
+  background: url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/32x32/br_up.png) no-repeat right rgb(255, 239, 172);
+  background-position-x: 95%;
+}
+
+.form-wrapper__submit-button {
+  outline: none;
+  font-family: "Bangers", cursive;
+  text-transform: uppercase;
+  background: var(--yellow);
+  color: var(--red);
+  border: none;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 24px;
+  cursor: pointer;
+  align-self: center;
+  margin-bottom: 50px;
+}
