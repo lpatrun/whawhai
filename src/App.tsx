@@ -1,33 +1,41 @@
-import React, { useReducer } from 'react';
-import './App.css';
+import React, { useReducer } from "react";
+import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import HomeView from './containers/HomeView'
-import WarriorsView from './containers/WarriorsView'
-import FightView from './containers/FightView'
+import HomeContainer from "./containers/HomeContainer";
+import WarriorsContainer from "./containers/WarriorsContainer";
+import FightContainer from "./containers/FightContainer";
+import ErrorContainer from "./containers/ErrorContainer";
+import ResultsContainer from "./containers/ResultsContainer";
 
-import { GameContext  } from "./context/context";
-import { gameReducer } from "./reducer/reducer";
-import {initialGameState} from './state/state';
+import { GameContext } from "./context/gameContext";
+import { gameReducer } from "./reducer/gameReducer";
+import { initialGameState } from "./state/gameState";
 
+import { ErrorContext } from "./context/errorContext";
+import { errorReducer } from "./reducer/errorReducer";
+import { initialErrorState } from "./state/errorState";
 
 function App() {
+  const [errorState, errorDispatch] = useReducer(errorReducer, initialErrorState);
   const [state, dispatch] = useReducer(gameReducer, initialGameState);
-  
+
   return (
     <>
-  <Router basename={process.env.PUBLIC_URL}>
-        <GameContext.Provider value={{ state, dispatch }}>
+      <Router>
+        <ErrorContext.Provider value={{ errorState, errorDispatch }}>
+          <GameContext.Provider value={{ state, dispatch }}>
             <Switch>
-              <Route path="/" exact component={HomeView} />
-              <Route path="/warriors" component={WarriorsView} />
-              <Route path="/fight" component={FightView} />
-              <Route path="*" component={HomeView} />
+              <Route path="/" exact component={HomeContainer} />
+              <Route path="/warriors" component={WarriorsContainer} />
+              <Route path="/fight/:id" component={ResultsContainer} />
+              <Route path="/fight" component={FightContainer} />
+              <Route path="*" component={HomeContainer} />
             </Switch>
-         
-        </GameContext.Provider>
+            <ErrorContainer />
+          </GameContext.Provider>
+        </ErrorContext.Provider>
       </Router>
-
     </>
   );
 }

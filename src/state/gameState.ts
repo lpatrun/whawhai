@@ -1,15 +1,4 @@
-export interface GameState {
-  warriors: Warrior[];
-  selectedWarrior: number;
-  selectedAttacks: string[];
-}
-
-export interface Warrior {
-  id: number,
-  name: string;
-  image: string;
-  attacks: string[];
-}
+import { GameState } from '../types/GameStateType';
 
 export const initialGameState: GameState = {
   warriors: [
@@ -20,5 +9,6 @@ export const initialGameState: GameState = {
     { id: 4, name: "Unicorn", image: "avatar_unicorn", attacks: [ "Rainbowshit", "Candypuke", "Cornlove"]},
   ],
   selectedWarrior: 0,
+  warriorName: "",
   selectedAttacks: []
 };
