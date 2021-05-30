@@ -11,6 +11,7 @@ export type Props = {
   };
   fightRounds: RoundType[];
   totalWinner: string,
-  tryAgain: () => void
+  tryAgain: () => void,
+  chickenOut: () => void
 };
 

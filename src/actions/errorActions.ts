@@ -5,12 +5,12 @@ export enum ActionType {
 
 type SetError = {
   type: ActionType.SetError;
-  payload: {message: string, code: number, reason: string  | undefined};
+  payload: {message: string, code: number, reason: string  | undefined, type: string};
 }
 
-export const setError = (message: string, code: number, reason: string | undefined): SetError => ({
+export const setError = (message: string, code: number, reason: string | undefined, type: string): SetError => ({
   type: ActionType.SetError,
-  payload: { message, code, reason },
+  payload: { message, code, reason, type },
 });
 
 type ClearError = {

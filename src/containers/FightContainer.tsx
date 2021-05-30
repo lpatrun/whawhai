@@ -43,7 +43,8 @@ export default function FightView() {
             setError(
               response.data.error.message,
               response.data.error.code,
-              response.data.error?.data?.reason
+              response.data.error?.data?.reason,
+              "error"
             )
           );
         }

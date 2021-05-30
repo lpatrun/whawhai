@@ -48,7 +48,8 @@ export default function ResultsContainer() {
               setError(
                 response.data.error.message,
                 response.data.error.code,
-                response.data.error?.data?.reason
+                response.data.error?.data?.reason,
+                "error"
               )
             );
           } else if (response.data.result.fight.Warrior1) {
@@ -89,9 +90,17 @@ export default function ResultsContainer() {
               setError(
                 response.data.error.message,
                 response.data.error.code,
-                response.data.error?.data?.reason
+                response.data.error?.data?.reason,
+                "error"
               )
             );
+          } else if (
+            +response.data.result.fight.Status === 1 &&
+            mounted.current
+          ) {
+            setOpponent({ ...response.data.result.fight.Warrior2 });
+            setFightStatus(1);
+            battleResults();
           } else if (
             +response.data.result.fight.Status === 2 &&
             mounted.current
@@ -119,30 +128,37 @@ export default function ResultsContainer() {
   }, [errorDispatch, id]);
 
   useEffect(() => {
-    if (fightStatus > 1 && totalWinner === "") {
+    if (fightStatus >= 1 && totalWinner === "") {
       let hostResult = 0;
       let opponentResult = 0;
 
-      for (let i = 0; i < fightRounds.length; i++) {
-        if (
-          (fightRounds[i].Warrior1Attack === 0 &&
-            fightRounds[i].Warrior2Attack === 1) ||
-          (fightRounds[i].Warrior1Attack === 1 &&
-            fightRounds[i].Warrior2Attack === 2) ||
-          (fightRounds[i].Warrior1Attack === 2 &&
-            fightRounds[i].Warrior2Attack === 0)
-        ) {
-          opponentResult += 1;
-        } else if (
-          (fightRounds[i].Warrior1Attack === 1 &&
-            fightRounds[i].Warrior2Attack === 0) ||
-          (fightRounds[i].Warrior1Attack === 2 &&
-            fightRounds[i].Warrior2Attack === 1) ||
-          (fightRounds[i].Warrior1Attack === 0 &&
-            fightRounds[i].Warrior2Attack === 2)
-        ) {
-          hostResult += 1;
+      let hostAttacks = state.selectedAttacks;
+      let opponentAttacks = opponent?.Attacks;
+
+      if (opponentAttacks && hostAttacks) {
+
+        for (let i = 0; i < hostAttacks.length; i++) {
+          if (
+            (hostAttacks[i] === 0 &&
+              opponentAttacks[i] === 1) ||
+            (hostAttacks[i] === 1 &&
+              opponentAttacks[i] === 2) ||
+            (hostAttacks[i] === 2 &&
+              opponentAttacks[i] === 0)
+          ) {
+            opponentResult += 1;
+          } else if (
+            (hostAttacks[i] === 1 &&
+              opponentAttacks[i] === 0) ||
+            (hostAttacks[i] === 2 &&
+              opponentAttacks[i] === 1) ||
+            (hostAttacks[i] === 0 &&
+              opponentAttacks[i] === 2)
+          ) {
+            hostResult += 1;
+          }
         }
+
       }
 
       hostResult > opponentResult
@@ -152,10 +168,21 @@ export default function ResultsContainer() {
         : setTotalWinner("draw");
     }
     return () => {};
-  }, [fightRounds, fightStatus, totalWinner]);
+  }, [fightStatus, totalWinner, opponent?.Attacks, state.selectedAttacks]);
 
   function tryAgain() {
     history.push("/")
+  }
+
+  function chickenOut() {
+    errorDispatch(
+      setError(
+        "Too late to chicken out",
+        420,
+        "You can't quit now",
+        "info"
+      )
+    );
   }
 
   return (
@@ -166,6 +193,7 @@ export default function ResultsContainer() {
       fightRounds={fightRounds}
       totalWinner={totalWinner}
       tryAgain={tryAgain}
+      chickenOut={chickenOut}
     />
   );
 }

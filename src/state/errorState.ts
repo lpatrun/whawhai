@@ -3,11 +3,13 @@ export interface ErrorState {
   message: string | null;
   code: number | null;
   reason: string | undefined;
+  type: string;
 }
 
 export const initialErrorState: ErrorState = {
   error: false,
   message: null,
   code: null,
-  reason: undefined
+  reason: undefined,
+  type: 'info'
 };

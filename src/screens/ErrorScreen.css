@@ -27,11 +27,27 @@
   transform: translate(-50%, -50%);
   width: 930px;
   height: 400px;
-  background: #ff504d;
-  border: 3px solid #ff504d;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   display: none;
+}
+
+.modal-error {
+  background: var(--red);
+  border: 3px solid var(--red);
+}
+
+.modal-error .modal-body p {
+  color: var(--red);
+}
+
+.modal-info {
+  background: var(--green);
+  border: 3px solid var(--green);
+}
+
+.modal-info .modal-body p {
+  color: var(--grey);
 }
 
 .modal-show {
@@ -96,7 +112,6 @@
 .modal-body p {
   font-family: 'Roboto', sans-serif;
   font-size: 45px;
-  color: var(--red);
   font-weight: 600;
   text-align: center;
 }

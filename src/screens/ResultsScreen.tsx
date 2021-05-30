@@ -9,7 +9,7 @@ import './ResultsScreen.css'
 import ResultsAnnouncment from '../components/ResultsAnnouncment';
 
 export default function ResultsScreen(props:Props) {
-  const opponentImg = props.fightStatus > 1 ? (
+  const opponentImg = props.fightStatus >= 1 ? (
     <img
       src={
         require(`../images/${
@@ -56,7 +56,7 @@ export default function ResultsScreen(props:Props) {
           <div className="fight-wrapper__item">
             <p>{props.state.warriorName}</p>
 
-            <ResultsImageWrapper totalWinner={props.totalWinner} character={"host"}>
+            <ResultsImageWrapper fightStatus={props.fightStatus} totalWinner={props.totalWinner} character={"host"}>
               <img
                 src={
                   require(`../images/${
@@ -69,7 +69,7 @@ export default function ResultsScreen(props:Props) {
                 />
             </ ResultsImageWrapper>
 
-            <ResultsAnnouncment totalWinner={props.totalWinner} character={"host"} />
+            <ResultsAnnouncment fightStatus={props.fightStatus} totalWinner={props.totalWinner} character={"host"} />
 
           </div>
           <div className="fight-wrapper__item">
@@ -77,21 +77,41 @@ export default function ResultsScreen(props:Props) {
           </div>
           <div className="fight-wrapper__item">
             <p>{props?.opponent?.Name ? props.opponent.Name : "Unknown"}</p>
-            <ResultsImageWrapper totalWinner={props.totalWinner} character={"opponent"}>
+            <ResultsImageWrapper fightStatus={props.fightStatus} totalWinner={props.totalWinner} character={"opponent"}>
               {opponentImg}
             </ResultsImageWrapper>
-            <ResultsAnnouncment totalWinner={props.totalWinner} character={"opponent"} />
+            <ResultsAnnouncment fightStatus={props.fightStatus} totalWinner={props.totalWinner} character={"opponent"} />
           </div>
         </div>
 
-        {props.fightStatus < 2 && (
+        {props.fightStatus < 1 && (
           <div className="player-waiting">
             <span>WAITING FOR 2ND PLAYER TO JOIN...</span>
           </div>
         )}
 
+        {props.totalWinner !== 'draw' && props.fightStatus === 1 && (
+          <div className="player-waiting">
+            <span>
+              {props.totalWinner === 'host' && `BEATING THE SHIT OUT OF ${props.opponent?.Name}`}
+              {props.totalWinner === 'opponent' && `BEATING THE SHIT OUT OF ${props.state.warriorName}`}
+            </span>
+          </div>
+        )}
+
         {fRounds}
 
+        {props.fightStatus === 0  && (
+          <div className="flex-center">
+            <button className="btn btn-primary" onClick={props.tryAgain}>PANIC!!!</button>
+          </div>
+        )}
+
+        {props.fightStatus === 1  && (
+          <div className="flex-center">
+            <button className="btn btn-primary" onClick={props.chickenOut}>SURRENDER!!!</button>
+          </div>
+        )}
 
         {props.fightStatus === 2 && (
           <div className="flex-center">

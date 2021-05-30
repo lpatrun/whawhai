@@ -14,8 +14,12 @@ export default function ErrorContainer() {
     errorDispatch(clearError())
     history.push("/")
   }
+  
+  function closeModal() {
+    errorDispatch(clearError())
+  }
 
   return (
-    <ErrorScreen errorState={errorState} resetError={resetError} />
+    <ErrorScreen errorState={errorState} resetError={resetError} closeModal={closeModal} />
   )
 }
