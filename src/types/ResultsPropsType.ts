@@ -10,6 +10,7 @@ export type Props = {
     Attacks: number[];
   };
   fightRounds: RoundType[];
-  totalWinner: string
+  totalWinner: string,
+  tryAgain: () => void
 };
 

@@ -77,7 +77,7 @@ export default function HomeScreen(props: Props) {
           type="submit"
           name="startGame"
           id="startGame"
-          className="form-wrapper__submit-button"
+          className="btn btn-primary"
         >
           FIGHT!!!
         </button>

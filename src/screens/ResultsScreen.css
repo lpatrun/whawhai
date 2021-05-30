@@ -72,6 +72,7 @@
   font-family: "Bangers", cursive;
   text-align: center;
   font-size: 28px;
+  margin-bottom: 50px;
 }
 
 .total-winner {
@@ -82,4 +83,9 @@
 .draw-game {
   border: 10px solid var(--yellow);;
   border-radius: 100%;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
 }

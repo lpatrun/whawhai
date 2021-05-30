@@ -91,6 +91,13 @@ export default function ResultsScreen(props:Props) {
         )}
 
         {fRounds}
+
+
+        {props.fightStatus === 2 && (
+          <div className="flex-center">
+            <button className="btn btn-primary" onClick={props.tryAgain}>AGAIN!!!</button>
+          </div>
+        )}
       </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { RoundType } from "../types/RoundType";
 import { BattleResultsType } from "../types/BattleResultsType";
@@ -15,6 +15,7 @@ import { useCustomContext } from "../custom-hooks/useGameContext";
 import { setFullWarrior } from "../actions/gameActions";
 
 export default function ResultsContainer() {
+  let history = useHistory();
   let { id } = useParams<{ id: string }>();
   const { state, dispatch } = useCustomContext();
   const { errorDispatch } = useErrorContext();
@@ -153,6 +154,10 @@ export default function ResultsContainer() {
     return () => {};
   }, [fightRounds, fightStatus, totalWinner]);
 
+  function tryAgain() {
+    history.push("/")
+  }
+
   return (
     <ResultsScreen
       state={state}
@@ -160,6 +165,7 @@ export default function ResultsContainer() {
       opponent={opponent}
       fightRounds={fightRounds}
       totalWinner={totalWinner}
+      tryAgain={tryAgain}
     />
   );
 }

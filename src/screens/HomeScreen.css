@@ -108,21 +108,6 @@ font-family: 'Roboto', sans-serif; */
   background-position-x: 95% !important;
 }
 
-.form-wrapper__submit-button {
-  outline: none;
-  font-family: "Bangers", cursive;
-  text-transform: uppercase;
-  background: var(--yellow);
-  color: var(--red);
-  border: none;
-  text-align: center;
-  padding: 10px 20px;
-  font-size: 24px;
-  cursor: pointer;
-  align-self: center;
-  margin-bottom: 50px;
-}
-
 .error-message {
   color: var(--yellow);
   margin: 10px 0;

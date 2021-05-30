@@ -1,7 +1,7 @@
 :root {
-  --yellow: #FFDF59;
-  --green: #73FFA0;
-  --red: #FF504D;
+  --yellow: #ffdf59;
+  --green: #73ffa0;
+  --red: #ff504d;
   --gray: #434343;
   --white: #ffffff;
 }
@@ -12,6 +12,23 @@
   padding: 0;
 }
 
+.btn {
+  outline: none;
+  font-family: "Bangers", cursive;
+  text-transform: uppercase;
+  border: none;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 24px;
+  cursor: pointer;
+  align-self: center;
+  margin-bottom: 50px;
+}
+
+.btn-primary {
+  background: var(--yellow);
+  color: var(--red);
+}
+
 /* font-family: 'Bangers', cursive;
 font-family: 'Roboto', sans-serif; */
-
