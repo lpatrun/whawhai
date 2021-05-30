@@ -1,13 +1,14 @@
 export enum ActionType {
   SelectWarrior,
   SetCustomWarrior,
-  ClearCustomWarrior
+  SetFullWarrior,
+  ClearCustomWarrior,
 }
 
 type SelectWarrior = {
   type: ActionType.SelectWarrior;
-  payload: {id: number};
-}
+  payload: { id: number };
+};
 
 export const selectWarrior = (id: number): SelectWarrior => ({
   type: ActionType.SelectWarrior,
@@ -16,21 +17,37 @@ export const selectWarrior = (id: number): SelectWarrior => ({
 
 type SetCustomWarrior = {
   type: ActionType.SetCustomWarrior;
-  payload: {name: string, attacks: number[]};
-}
+  payload: { name: string; attacks: number[] };
+};
 
-export const setCustomWarrior = (name: string, attacks: number[]): SetCustomWarrior => ({
+export const setCustomWarrior = (
+  name: string,
+  attacks: number[]
+): SetCustomWarrior => ({
   type: ActionType.SetCustomWarrior,
   payload: { name, attacks },
 });
 
+type SetFullWarrior = {
+  type: ActionType.SetFullWarrior;
+  payload: { Name: string; WarriorType: number; Attacks: number[] };
+};
+
+export const setFullWarrior = (
+  Name: string,
+  WarriorType: number,
+  Attacks: number[]
+): SetFullWarrior => ({
+  type: ActionType.SetFullWarrior,
+  payload: { Name, WarriorType, Attacks },
+});
 
 type ClearCustomWarrior = {
   type: ActionType.ClearCustomWarrior;
-}
+};
 
 export const clearCustomWarrior = (): ClearCustomWarrior => ({
   type: ActionType.ClearCustomWarrior,
 });
 
-export type GameActions = SelectWarrior | SetCustomWarrior | ClearCustomWarrior
+export type GameActions = SelectWarrior | SetCustomWarrior | ClearCustomWarrior | SetFullWarrior;
