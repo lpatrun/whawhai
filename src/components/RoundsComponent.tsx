@@ -31,7 +31,7 @@ export default function RoundsComponent(props: Props) {
       <span>{props.num + 1}. </span>
       <span className={`${roundWinner === 2 ? "round-lost" : ""}`}>
         {
-          props.state.warriors[props.state.selectedWarrior ? props.state.selectedWarrior : 0].attacks[
+          props.state.warriors[props.state.selectedWarrior].attacks[
             props.round.Warrior1Attack
           ]
         }

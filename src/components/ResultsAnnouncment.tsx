@@ -1,23 +1,27 @@
-import React from 'react'
+import React from "react";
+import { Props } from "../types/ResultsAnnouncmentType";
+import { makeStyles } from "@material-ui/core";
 
-import './ResultsAnnouncment.css'
-
-type Props = {
-  totalWinner: string,
-  character: string,
-  fightStatus: number
-}
+const useStyles = makeStyles({
+  txtGreen: {
+    color: '#73ffa0'
+  }
+})
 
 export default function ResultsAnnouncment(props: Props) {
+  const classes = useStyles();
+
   if (props.totalWinner === "" || props.fightStatus < 2) {
-    return <></>
+    return <></>;
   }
 
   if (props.totalWinner === "draw") {
-    return <p>DRAWN</p>
+    return <p>DRAWN</p>;
   }
 
   return (
-    <p className="text-green">{ props.character === props.totalWinner && "WINNER" }</p>
-  )
+    <p className={classes.txtGreen}>
+      {props.character === props.totalWinner && "WINNER"}
+    </p>
+  );
 }

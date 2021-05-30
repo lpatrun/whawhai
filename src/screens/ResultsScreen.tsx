@@ -1,50 +1,15 @@
 import React from 'react'
-import { RoundType } from '../types/RoundType'
 import { Props } from '../types/ResultsPropsType'
 
-import RoundsComponent from "../components/RoundsComponent";
 import ResultsImageWrapper from "../components/ResultsImageWrapper"
 
 import './ResultsScreen.css'
 import ResultsAnnouncment from '../components/ResultsAnnouncment';
+import OpponentImage from '../components/OpponentImage';
+import FightRounds from '../components/FightRounds';
+import FightButtons from '../components/FightButtons';
 
 export default function ResultsScreen(props:Props) {
-  const opponentImg = props.fightStatus >= 1 ? (
-    <img
-      src={
-        require(`../images/${
-          props.state.warriors[props?.opponent?.WarriorType ? props.opponent.WarriorType : 0].image
-        }.svg`).default
-      }
-      alt={props.opponent?.Name ? props.opponent.Name : "fail 1"}
-      width="200"
-      height="200"
-    />
-  ) : (
-    <img
-      className="unknown-image"
-      src="https://via.placeholder.com/200x200/FFFFFF/FFFF00?text=?"
-      alt="Unknown"
-      width="200"
-      height="200"
-    />
-  );
-
-  let fRounds = props?.fightRounds?.length ? (
-    <div className="fight-rounds">
-      {props.fightRounds.map((round: RoundType, index: number) => (
-        <RoundsComponent 
-          key={index}
-          num={index}
-          state={props.state}
-          round={round}
-          opponent={props.opponent}
-        />
-      ))}
-    </div>
-  ) : (
-    <></>
-  );
 
   return (
     <div className="container">
@@ -68,7 +33,6 @@ export default function ResultsScreen(props:Props) {
                 height="200"
                 />
             </ ResultsImageWrapper>
-
             <ResultsAnnouncment fightStatus={props.fightStatus} totalWinner={props.totalWinner} character={"host"} />
 
           </div>
@@ -78,7 +42,7 @@ export default function ResultsScreen(props:Props) {
           <div className="fight-wrapper__item">
             <p>{props?.opponent?.Name ? props.opponent.Name : "Unknown"}</p>
             <ResultsImageWrapper fightStatus={props.fightStatus} totalWinner={props.totalWinner} character={"opponent"}>
-              {opponentImg}
+              <OpponentImage fightStatus={props.fightStatus} opponent={props.opponent} state={props.state}/>
             </ResultsImageWrapper>
             <ResultsAnnouncment fightStatus={props.fightStatus} totalWinner={props.totalWinner} character={"opponent"} />
           </div>
@@ -99,25 +63,9 @@ export default function ResultsScreen(props:Props) {
           </div>
         )}
 
-        {fRounds}
+        <FightRounds fightRounds={props.fightRounds} state={props.state} opponent={props.opponent} />
 
-        {props.fightStatus === 0  && (
-          <div className="flex-center">
-            <button className="btn btn-primary" onClick={props.tryAgain}>PANIC!!!</button>
-          </div>
-        )}
-
-        {props.fightStatus === 1  && (
-          <div className="flex-center">
-            <button className="btn btn-primary" onClick={props.chickenOut}>SURRENDER!!!</button>
-          </div>
-        )}
-
-        {props.fightStatus === 2 && (
-          <div className="flex-center">
-            <button className="btn btn-primary" onClick={props.tryAgain}>AGAIN!!!</button>
-          </div>
-        )}
+        <FightButtons fightStatus={props.fightStatus} tryAgain={props.tryAgain} chickenOut={props.chickenOut} />
       </div>
   )
 }

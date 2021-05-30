@@ -1,13 +1,7 @@
 import React from 'react'
+import { Props } from '../types/ResultsImageWrapperType';
 
 import './ResultsImageWrapper.css';
-
-type Props = {
-  totalWinner: string,
-  character: string,
-  fightStatus: number,
-  children: React.ReactNode
-}
 
 export default function ResultsImageWrapper(props: Props) {
   if ( props.fightStatus < 2 ) {

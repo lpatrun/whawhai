@@ -5,8 +5,6 @@ import { Warrior } from '../types/WarriorType';
 
 import './WarriorsScreen.css'
 
-
-
 export default function WarriorsScreen(props: Props) {
   if (!props.state.warriors) {
     return (
@@ -15,7 +13,6 @@ export default function WarriorsScreen(props: Props) {
       </div>
     )
   }
-
 
   return (
     <div className="container">
