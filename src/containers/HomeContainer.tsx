@@ -13,8 +13,12 @@ export default function HomeView() {
   const { state, dispatch } = useCustomContext();
   const history = useHistory();
   const [warrior] = useState(state.warriors.find((warrior: Warrior) => warrior.id === state.selectedWarrior));
+  const {register, handleSubmit, formState: { errors }} = useForm<FormValues>({resolver,});
+  const [inputs, setInputs] = useState({ attack1: false, attack2: false, attack3: false})
 
-  const {register, handleSubmit, formState: { errors }} = useForm<FormValues>({mode: "onChange", resolver,});
+  const handleOnChange = (event: any) => {
+    setInputs({...inputs, [event.target.name]: (event.target.value ? true : false)})
+  }
 
   const onSubmit = handleSubmit((data) => {
     dispatch(setCustomWarrior(data.warriorName, [+data.attack1, +data.attack2, +data.attack3,]));
@@ -22,6 +26,14 @@ export default function HomeView() {
   });
 
   return (
-    <HomeScreen warrior={warrior} onSubmit={onSubmit} state={state} register={register} errors={errors}/>
+    <HomeScreen 
+      warrior={warrior} 
+      onSubmit={onSubmit} 
+      state={state} 
+      register={register} 
+      errors={errors} 
+      inputs={inputs} 
+      handleOnChange={handleOnChange}
+    />
   )
 }
