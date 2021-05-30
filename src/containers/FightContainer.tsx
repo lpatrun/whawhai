@@ -36,7 +36,7 @@ export default function FightView() {
         battleRegistrationData
       )
       .then((response) => {
-        if (response.data.result.id) {
+        if (response.data?.result?.id) {
           history.push("/fight/" + response.data.result.id);
         } else if (response.data.error) {
           errorDispatch(
