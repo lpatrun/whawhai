@@ -40,38 +40,38 @@ export default function HomeScreen(props: Props) {
           />
         </div>
           {props.errors?.warriorName && (
-            <p>{props.errors.warriorName.message}</p>
+            <p className="error-message">{props.errors.warriorName.message}</p>
           )}
 
         <div className="form-wrapper__select-data">
-          <select id="attack1" {...props.register("attack1")}>
-            <option value="default">Attack For Round #1</option>
+          <select className={`${props.inputs.attack1 ? "attack-selected" : ""}`} id="attack1" {...props.register("attack1")} onChange={props.handleOnChange}>
+            <option value="">Attack For Round #1</option>
             {props.warrior.attacks.map((attack: string, index: number) => (
               <option key={index} value={index}>
                 {attack}
               </option>
             ))}
           </select>
-          <select id="attack2" {...props.register("attack2")}>
-            <option value="default">Attack For Round #2</option>
+          <select className={`${props.inputs.attack2 ? "attack-selected" : ""}`} id="attack2" {...props.register("attack2")} onChange={props.handleOnChange}>
+            <option value="">Attack For Round #2</option>
             {props.warrior.attacks.map((attack: string, index: number) => (
               <option key={index} value={index}>
                 {attack}
               </option>
             ))}
           </select>
-          <select id="attack3" {...props.register("attack3")}>
-            ,<option value="default">Attack For Round #3</option>
+          <select className={`${props.inputs.attack3 ? "attack-selected" : ""}`} id="attack3" {...props.register("attack3")} onChange={props.handleOnChange}>
+            ,<option value="">Attack For Round #3</option>
             {props.warrior.attacks.map((attack: string, index: number) => (
               <option key={index} value={index}>
                 {attack}
               </option>
             ))}
           </select>
+        {props.errors?.attack1 && <p className="error-message">{props.errors.attack1.message}</p>}
+        {props.errors?.attack2 && <p className="error-message">{props.errors.attack2.message}</p>}
+        {props.errors?.attack3 && <p className="error-message">{props.errors.attack3.message}</p>}
         </div>
-        {props.errors?.attack1 && <p>{props.errors.attack1.message}</p>}
-        {props.errors?.attack2 && <p>{props.errors.attack2.message}</p>}
-        {props.errors?.attack3 && <p>{props.errors.attack3.message}</p>}
 
         <button
           type="submit"
