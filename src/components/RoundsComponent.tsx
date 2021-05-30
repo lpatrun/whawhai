@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { RoundsProps } from "../types/RoundsPropsType";
+import { Props } from "../types/RoundsPropsType";
 
 import "./RoundsComponent.css";
 
-export default function RoundsComponent(props: RoundsProps) {
+export default function RoundsComponent(props: Props) {
   const [roundWinner, setRoundWInner] = useState(0);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function RoundsComponent(props: RoundsProps) {
       <span>{props.num + 1}. </span>
       <span className={`${roundWinner === 2 ? "round-lost" : ""}`}>
         {
-          props.state.warriors[props.state.selectedWarrior].attacks[
+          props.state.warriors[props.state.selectedWarrior ? props.state.selectedWarrior : 0].attacks[
             props.round.Warrior1Attack
           ]
         }
@@ -39,7 +39,7 @@ export default function RoundsComponent(props: RoundsProps) {
       <span> - </span>
       <span className={`${roundWinner === 1 ? "round-lost" : ""}`}>
         {
-          props.state.warriors[props.opponent.WarriorType].attacks[
+          props.state.warriors[props?.opponent?.WarriorType ? props.opponent.WarriorType : 0].attacks[
             props.round.Warrior2Attack
           ]
         }
