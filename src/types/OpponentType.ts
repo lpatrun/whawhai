@@ -1,5 +1,5 @@
 export type OpponentType = {
-  Name: string | null;
+  Name: string;
   WarriorType: number;
   Attacks: number[];
 }

@@ -1,16 +1,13 @@
-import { GameState } from './GameStateType';
-import { Warrior } from './WarriorType';
 import { RoundType } from './RoundType';
+import { GameState } from './GameStateType';
 
-export type RoundsProps = {
+export type Props = {
+  num: number;
   state: GameState;
-  warriors: Warrior[];
-  selectedWarrior: number;
   round: RoundType;
-  opponent: {
+  opponent: undefined | {
     Name: string | null;
     WarriorType: number;
     Attacks: number[];
   };
-  num: number;
 };

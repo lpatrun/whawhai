@@ -15,4 +15,10 @@ export type Props = {
   onSubmit: () => {};
   register: UseFormRegister<FormValues>;
   errors: DeepMap<FormValues, FieldError>;
+  inputs: {
+    attack1: boolean;
+    attack2: boolean;
+    attack3: boolean;
+  },
+  handleOnChange: (event: any) => void
 };
