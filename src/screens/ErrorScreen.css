@@ -1,14 +1,3 @@
-:root {
-  --yellow: #ffdf59;
-  --green: #73ffa0;
-  --red: #ff504d;
-  --gray: #434343;
-}
-
-.backdrop-show {
-  display:block !important;
-}
-
 .backdrop {
   position: fixed;
   z-index: 100;
@@ -17,7 +6,17 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, .5);
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 400ms ease-in;
+}
+
+.backdrop-show {
+  opacity: 1;
+  pointer-events: auto;
+
+  transition: opacity 400ms ease-in;
 }
 
 .modal {
@@ -65,7 +64,9 @@
   width: 32px;
   height: 32px;
   opacity: 1;
+  cursor: pointer;
 }
+
 .close:before, .close:after {
   position: absolute;
   left: 15px;
@@ -97,5 +98,6 @@
   font-size: 45px;
   color: var(--red);
   font-weight: 600;
+  text-align: center;
 }
 
