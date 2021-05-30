@@ -1,10 +1,3 @@
-:root {
-  --yellow: #ffdf59;
-  --green: #73ffa0;
-  --red: #ff504d;
-  --gray: #434343;
-}
-
 /* font-family: 'Bangers', cursive;
 font-family: 'Roboto', sans-serif; */
 
@@ -43,8 +36,6 @@ font-family: 'Roboto', sans-serif; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  margin-bottom: 25px;
 }
 
 .form-wrapper__basic-data input {
@@ -67,7 +58,7 @@ font-family: 'Roboto', sans-serif; */
 .form-wrapper__select-data {
   display: flex;
   flex-direction: column;
-
+  margin-top: 25px;
   margin-bottom: 50px;
 }
 
@@ -108,6 +99,15 @@ font-family: 'Roboto', sans-serif; */
   background-position-x: 95%;
 }
 
+.form-wrapper__select-data select option {
+  background: #ffffff;
+}
+
+.attack-selected {
+  background: url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/32x32/br_up.png) no-repeat right #73FFA0 !important;
+  background-position-x: 95% !important;
+}
+
 .form-wrapper__submit-button {
   outline: none;
   font-family: "Bangers", cursive;
@@ -121,4 +121,10 @@ font-family: 'Roboto', sans-serif; */
   cursor: pointer;
   align-self: center;
   margin-bottom: 50px;
+}
+
+.error-message {
+  color: var(--yellow);
+  margin: 10px 0;
+  text-align: center;
 }

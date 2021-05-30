@@ -1,11 +1,3 @@
-:root {
-  --yellow: #ffdf59;
-  --green: #73ffa0;
-  --red: #ff504d;
-  --gray: #434343;
-  --white: #ffffff;
-}
-
 .fight-name {
   text-align: center;
   padding-top: 25px;
