@@ -2,6 +2,10 @@
 
 React in typescript project with jsonrpc2.
 
+# Online
+
+Find me online https://lpatrun.github.io/whawhai/
+
 # Project description
 
 At starting screen you can name your warrior/hero and select 3 attacks and also choose your avatar by clicking on it.

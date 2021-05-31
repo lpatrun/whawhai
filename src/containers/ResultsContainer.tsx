@@ -43,6 +43,7 @@ export default function ResultsContainer() {
           battleResultsData
         )
         .then((response) => {
+          console.log("nema heroja", response)
           if (response.data.error) {
             errorDispatch(
               setError(

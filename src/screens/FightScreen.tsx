@@ -20,8 +20,6 @@ export default function FightScreen(props: Props) {
               }.svg`).default
             }
             alt={props.state.warriorName}
-            width="200"
-            height="200"
           />
         </div>
         <div className="fight-wrapper__item">
@@ -33,8 +31,6 @@ export default function FightScreen(props: Props) {
             className="unknown-image"
             src="https://via.placeholder.com/200x200/FFFFFF/FFFF00?text=?"
             alt="Unknown"
-            width="200"
-            height="200"
           />
         </div>
       </div>

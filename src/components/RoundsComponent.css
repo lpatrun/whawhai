@@ -8,3 +8,10 @@
 .round-lost {
   color: rgb(255, 151, 83);
 }
+
+@media (max-width: 425px) {
+  .single-round {
+    font-size: 22px;
+  }
+  
+}

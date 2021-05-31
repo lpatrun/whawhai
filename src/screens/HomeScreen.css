@@ -113,3 +113,22 @@ font-family: 'Roboto', sans-serif; */
   margin: 10px 0;
   text-align: center;
 }
+
+@media (max-width: 425px) {
+  .title-wrapper h1 {
+    font-size: 70px;
+  }
+
+  .form-wrapper {
+    width: 90%;
+  }
+
+  .form-wrapper__basic-data{
+    flex-direction: column;
+    row-gap: 15px;
+  }
+
+  .form-wrapper__select-data select {
+    font-size: 20px;
+  }
+}

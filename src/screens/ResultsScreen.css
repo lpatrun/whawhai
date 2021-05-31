@@ -51,7 +51,6 @@
 .player-waiting {
   width: 40%;
   margin: 0 auto;
-  height: 115px;
   background: rgb(153, 240, 181);
   border-radius: 5px;
   color: var(--white);
@@ -89,4 +88,35 @@
 .flex-center {
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 425px) {
+  .fight-wrapper {
+    width: 90%;
+  }
+
+  .fight-wrapper__item p {
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .fight-wrapper__item img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .fight-wrapper__item h2 {
+    font-size: 25px;
+    margin-top: 50px;
+  }
+
+  .player-waiting {
+    width: 90%;
+    padding: 10px
+  }
+  
+  .player-waiting span {
+    font-size: 21px;
+    letter-spacing: 2px;
+  }
 }

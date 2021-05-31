@@ -10,7 +10,7 @@ export function gameReducer(state: GameState, action: GameActions): GameState {
       return {...state, warriorName: action.payload.name, selectedAttacks: [...action.payload.attacks]};
 
     case ActionType.SetFullWarrior: 
-      return {...state, warriorName: action.payload.Name, selectedAttacks: action.payload.Attacks};
+      return {...state, warriorName: action.payload.Name, selectedWarrior: action.payload.WarriorType, selectedAttacks: action.payload.Attacks};
     
     case ActionType.ClearCustomWarrior:
       return {...state, warriorName: "", selectedAttacks: []}

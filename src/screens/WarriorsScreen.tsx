@@ -32,8 +32,6 @@ export default function WarriorsScreen(props: Props) {
                   src={require(`../images/${warrior.image}.svg`).default}
                   alt={warrior.name}
                   title={warrior.name}
-                  width="200"
-                  height="200"
                   onClick={() => props.setWarrior(warrior.id)}
                 />
               );
