@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/whawhai/static/css/main.a6e7be6a.chunk.css",
+    "main.js": "/whawhai/static/js/main.edf61680.chunk.js",
+    "main.js.map": "/whawhai/static/js/main.edf61680.chunk.js.map",
+    "runtime-main.js": "/whawhai/static/js/runtime-main.c95ccbec.js",
+    "runtime-main.js.map": "/whawhai/static/js/runtime-main.c95ccbec.js.map",
+    "static/js/2.ce94fe2c.chunk.js": "/whawhai/static/js/2.ce94fe2c.chunk.js",
+    "static/js/2.ce94fe2c.chunk.js.map": "/whawhai/static/js/2.ce94fe2c.chunk.js.map",
+    "static/js/3.f1b4dfb4.chunk.js": "/whawhai/static/js/3.f1b4dfb4.chunk.js",
+    "static/js/3.f1b4dfb4.chunk.js.map": "/whawhai/static/js/3.f1b4dfb4.chunk.js.map",
+    "index.html": "/whawhai/index.html",
+    "static/css/main.a6e7be6a.chunk.css.map": "/whawhai/static/css/main.a6e7be6a.chunk.css.map",
+    "static/js/2.ce94fe2c.chunk.js.LICENSE.txt": "/whawhai/static/js/2.ce94fe2c.chunk.js.LICENSE.txt",
+    "static/media/avatar_dragon.svg": "/whawhai/static/media/avatar_dragon.abfe7daa.svg",
+    "static/media/avatar_hackerman.svg": "/whawhai/static/media/avatar_hackerman.5fd404b9.svg",
+    "static/media/avatar_marvin.svg": "/whawhai/static/media/avatar_marvin.5b39057d.svg",
+    "static/media/avatar_tesla.svg": "/whawhai/static/media/avatar_tesla.2421fbac.svg",
+    "static/media/avatar_unicorn.svg": "/whawhai/static/media/avatar_unicorn.6d8eabe7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c95ccbec.js",
+    "static/js/2.ce94fe2c.chunk.js",
+    "static/css/main.a6e7be6a.chunk.css",
+    "static/js/main.edf61680.chunk.js"
+  ]
+}
