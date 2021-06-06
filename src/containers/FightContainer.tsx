@@ -4,8 +4,9 @@ import { useCustomContext } from "../custom-hooks/useGameContext";
 import { useErrorContext } from "../custom-hooks/useErrorContext";
 import { setError } from "../actions/errorActions";
 
-import { BattleRegistrationType } from "../types/BattleRegistrationType";
 import FightScreen from "../screens/FightScreen";
+
+import { WhawhaiSite } from '../enums/WhawhaiSiteEnum';
 
 import axios from "axios";
 
@@ -17,23 +18,19 @@ export default function FightView() {
 
   useEffect(() => {
     mounted.current = true;
-    const battleRegistrationData: BattleRegistrationType = {
-      jsonrpc: "2.0",
-      method: "Register",
-      params: {
-        application: {
-          name: state.warriorName,
-          warriorType: state.selectedWarrior,
-          attacks: state.selectedAttacks,
-        },
-      },
-      id: "1",
-    };
-
     axios
       .post(
-        "https://recruitment-test.ants.house/jsonrpc2/whawhai/v1",
-        battleRegistrationData
+        WhawhaiSite.url,
+        {
+          method: "Register",
+          params: {
+            application: {
+              name: state.warriorName,
+              warriorType: state.selectedWarrior,
+              attacks: state.selectedAttacks,
+            }
+          }
+        }
       )
       .then((response) => {
         if (response.data?.result?.id) {

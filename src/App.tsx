@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 import HomeContainer from "./containers/HomeContainer";
 import WarriorsContainer from "./containers/WarriorsContainer";
@@ -16,9 +16,25 @@ import { ErrorContext } from "./context/errorContext";
 import { errorReducer } from "./reducer/errorReducer";
 import { initialErrorState } from "./state/errorState";
 
+import { RouteNames } from './enums/RouteNamesEnum';
+
 function App() {
   const [errorState, errorDispatch] = useReducer(errorReducer, initialErrorState);
   const [state, dispatch] = useReducer(gameReducer, initialGameState);
+
+  const routes = [{
+    path: RouteNames.HOME,
+    component: HomeContainer,
+  }, {
+    path: RouteNames.WARRIORS,
+    component: WarriorsContainer,
+  }, {
+    path: RouteNames.FIGHT_SINGLE,
+    component: ResultsContainer,
+  }, {
+    path: RouteNames.FIGHT,
+    component: FightContainer,
+  }];
 
   return (
     <>
@@ -26,11 +42,12 @@ function App() {
         <ErrorContext.Provider value={{ errorState, errorDispatch }}>
           <GameContext.Provider value={{ state, dispatch }}>
             <Switch>
-              <Route path="/" exact component={HomeContainer} />
-              <Route path="/warriors" component={WarriorsContainer} />
-              <Route path="/fight/:id" component={ResultsContainer} />
-              <Route path="/fight" component={FightContainer} />
-              <Route path="*" component={HomeContainer} />
+              
+            {
+              routes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />)
+            }
+
+              <Redirect to={RouteNames.HOME} />
             </Switch>
             <ErrorContainer />
           </GameContext.Provider>

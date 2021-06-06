@@ -15,5 +15,5 @@ export default function WarriorsView() {
     history.push("/");
   };
 
-  return ( <WarriorsScreen state={state} setWarrior={(id:number) => setWarrior(id)}/> );
+  return ( <WarriorsScreen state={state} setWarrior={setWarrior}/> );
 }
